@@ -323,7 +323,7 @@ class PubSubHubbub extends Stream {
         // v0.4 hubs have a link header that includes both the topic url and hub url
         let regex = /<([^>]+)>;\s*rel=(?:["'](?=.*["']))?([A-z]+)/gi;
         let requestLink = (req.headers && req.headers.link) || '';
-        let requestRels = regex.exec(requestLink);
+        let requestRels = regex.exec(requestLink) || [];
 
         setTopicHub(...requestRels);
 
